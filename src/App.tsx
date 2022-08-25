@@ -1,16 +1,22 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
-import GameOfLife from "./pages/GameOfLife/GameOfLife";
-import "./App.css";
+import { GameOfLife } from "./pages";
+import { getNextGridState } from "./pages/GameOfLife/utils";
 
-function App() {
+export const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<GameOfLife />}></Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <GameOfLife
+            width={10}
+            height={20}
+            getNextGridState={getNextGridState}
+          />
+        }
+      />
+    </Routes>
   );
-}
+};
 
 export default App;
